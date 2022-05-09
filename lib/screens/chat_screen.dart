@@ -1,14 +1,11 @@
-import 'dart:ui';
-
 import 'package:chat/models/message_model.dart';
 import 'package:chat/models/user_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {
-  User _user;
+  final User _user;
 
-  ChatScreen(this._user, {Key? key}) : super(key: key);
+  const ChatScreen(this._user, {Key? key}) : super(key: key);
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -144,25 +141,21 @@ class _ChatScreenState extends State<ChatScreen> {
       children: [
         Container(
           width: MediaQuery.of(context).size.width * 0.75,
-          padding: const EdgeInsets.only(
-              left: 20.0, top: 12.0, bottom: 12.0, right: 20.0),
+          padding: const EdgeInsets.only(left: 20.0, top: 12.0, bottom: 12.0, right: 20.0),
           margin: isMe
               ? const EdgeInsets.only(bottom: 8.0, left: 90.0)
-              : const EdgeInsets.only(
-                  bottom: 8.0,
-                ),
-          color: isMe ? const Color(0xFFFEF9EB) : const Color(0xFFFFEFEE),
+              : const EdgeInsets.only(bottom: 8.0),
           decoration: BoxDecoration(
-            color:  isMe ? Color(0xFFFEF9EB) : Color(0xFFFFEFEE),
+            color:  isMe ? const Color(0xFFFEF9EB) : const Color(0xFFFFEFEE),
             borderRadius: isMe
                 ? const BorderRadius.only(
-                    topLeft: Radius.circular(20.0),
-                    bottomLeft: Radius.circular(20.0),
-                  )
+              topLeft: Radius.circular(20.0),
+              bottomLeft: Radius.circular(20.0),
+            )
                 : const BorderRadius.only(
-                    topRight: Radius.circular(20.0),
-                    bottomRight: Radius.circular(20.0),
-                  ),
+              topRight: Radius.circular(20.0),
+              bottomRight: Radius.circular(20.0),
+            ),
           ),
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.start,
@@ -189,15 +182,15 @@ class _ChatScreenState extends State<ChatScreen> {
         isMe
             ? Container()
             : IconButton(
-                onPressed: () {},
-                icon: message.isLiked
-                    ? const Icon(Icons.favorite)
-                    : const Icon(Icons.favorite_border),
-                iconSize: 30,
-                color: message.isLiked
-                    ? Theme.of(context).primaryColor
-                    : Colors.blueGrey,
-              )
+          onPressed: () {},
+          icon: message.isLiked
+              ? const Icon(Icons.favorite)
+              : const Icon(Icons.favorite_border),
+          iconSize: 30,
+          color: message.isLiked
+              ? Theme.of(context).primaryColor
+              : Colors.blueGrey,
+        )
       ],
     );
   }
